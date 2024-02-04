@@ -1,0 +1,57 @@
+﻿@model IEnumerable<Post>
+@{
+	Layout = "_DashBoardLayout";
+}
+
+<div class="dash-content">
+        <div class="overview">
+            <div class="title">
+                <i class="uil uil-tachometer-fast-alt"></i>
+                <span class="text">All Posts</span>
+            </div>
+        </div>
+        <div>
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <td class="table-light">Id</td>
+                            <td class="table-light">Title</td>
+                            <td class="table-light">Author</td>
+                            <td class="table-light">Date</td>
+                            <td class="table-light">Description</td>
+                            <td class="table-light">Completed ?</td>
+                            <td class="table-light">operation</td>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>@item.Id</td>
+                                    <td>@item.Title</td>
+                                    <td>@item.Author</td>
+                                    <td>@item.Date</td>
+                                    <td>@item.Descrition</td>
+                                    <td>@item.Completed</td>
+                                    <td>
+                                    
+                                        <a asp-action="Update" asp-route-id="@item.Id" class="btn btn-success" role="button">
+                                            <span class="material-symbols-outlined">
+                                                Edit
+                                            </span>
+                                        </a>
+                                            <a asp-action="Remove" asp-route-id="@item.Id" class="btn btn-danger " role="button">
+                                            <span class="material-symbols-outlined">
+                                                delete
+                                            </span>
+                                        </a>
+                                    </td>
+                                  </tr>
+                             }
+                        
+                    </tbody>
+                </table>
+        </div>
+    </div>
+

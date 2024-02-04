@@ -1,0 +1,52 @@
+﻿@model IEnumerable<Product>
+@{
+	Layout = "_DashBoardLayout";
+}
+<div class="title">
+    <i class="uil uil-tachometer-fast-alt"></i>
+    <span class="text">Adding Product</span>
+</div>
+    
+<table class="table table-striped">
+<thead>
+    <tr>
+        <td class="table-light">id</td>
+        <td class="table-light">Name</td>
+        <td class="table-light">Description</td>
+        <td class="table-light">price</td>
+        <td class="table-light">Quantity</td>
+        <td class="table-light">operation</td>
+
+    </tr>
+</thead>
+<tbody>
+                            
+@foreach(var item in Model)
+{
+    <tr>
+        <td class="table-light">@item.Id</td>
+        <td class="table-light">@item.Name</td>
+        <td class="table-light">@item.Description</td>
+        <td class="table-light">@item.Price</td>
+        <td class="table-light">@item.Quantity</td>
+        <td class="table-light">@item.EnableSize</td>
+            <td>
+                <a class="btn btn-success" role="button" asp-action="Edit" asp-route-Id="@item.Id">
+                            <span class="material-symbols-outlined">
+                                Edit
+                            </span>
+                        </a>
+                        <a class="btn btn-danger " role="button" asp-action="Delete" asp-route-Id="@item.Id">
+                            <span class="material-symbols-outlined">
+                                delete
+                            </span>
+                        </a>
+                    </td>
+    </tr>
+}
+
+    </tbody>
+</table>
+@foreach(Product pr in Model){
+	
+}

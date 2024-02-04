@@ -1,0 +1,110 @@
+﻿@model Post
+@{
+	Layout = "_DashBoardLayout";
+}
+
+<div class="dash-content">
+    <div class="overview">
+    <div class="title">
+        <i class="uil uil-tachometer-fast-alt"></i>
+        <span class="text">Adding Post</span>
+    </div>
+
+    <div>
+        <form method="post" asp-action="Update" class="row">
+        <div class="mb-3">
+            <label asp-for="Title" class="form-label">Post Title</label>
+            <input
+            type="text"
+            asp-for="Title"
+            value="@Model.Title"
+            class="form-control"
+            placeholder="Enter Your Title"
+            />
+        </div>
+        <div class="mb-3 col-lg-6">
+            <label asp-for="Author" class="form-label">Post Author</label>
+            <input
+            type="text"
+            asp-for="Author"
+             value="@Model.Author"
+            class="form-control"
+            placeholder=" Enter Name "
+            />
+        </div>
+        <div class="mb-3 col-lg-6">
+            <label asp-for="Date" class="form-label">Post Date</label>
+            <input
+            type="Date"
+            asp-for="Date"
+            value="@ViewData["D"]"
+            class="form-control"
+            placeholder="Choose Date"
+            />
+        </div>
+        <div class="mb-3">
+            <label asp-for="Descrition" class="form-label">Post Description</label>
+            <textarea
+                type="text"
+                asp-for="Descrition"
+                class="form-control"
+
+                placeholder="Enter Your Description"
+            >
+                        @Model.Descrition
+        </textarea>
+            </div>
+
+        <div class="mb-3 col-lg-12 d-flex align-items-center mt-4">
+            <div class="form-check">
+            <input
+                class="form-check-input"
+                type="checkbox"
+                asp-for="Completed"
+                value="@Model.Completed"
+            />
+            <label  class="form-check-label" asp-for="Completed">
+                Completed
+            </label>
+            </div>
+        </div>
+
+        <div class="mb-3 col-lg-6">
+            <label asp-for="category.Id" class="form-label">Category</label>
+            <select asp-for="category.Id" class="form-select" >
+                        @{
+                            if(Model.category.Id == 1)
+                            {
+                                <option >Select one</option>
+                                <option value="1" selected>Fashion</option>
+                                <option value="2">Sports</option>
+                                <option value="3">Nature</option>
+                            }else if (Model.category.Id == 2)
+                            {
+                                <option >Select one</option>
+                                <option value="1" >Fashion</option>
+                                <option value="2" selected>Sports</option>
+                                <option value="3">Nature</option>
+                            }else if(Model.category.Id == 3)
+                            {
+                                <option >Select one</option>
+                                <option value="1" >Fashion</option>
+                                <option value="2" >Sports</option>
+                                <option value="3" selected>Nature</option>
+                            }else{
+                                <option selected >Select one</option>
+                                <option value="1" >Fashion</option>
+                                <option value="2" >Sports</option>
+                                <option value="3" >Nature</option>
+                            }
+                        }
+            </select>
+        </div>
+
+        <div class="col-lg-12 d-flex justify-content-center">
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
+        </form>
+    </div>
+    </div>
+</div>
