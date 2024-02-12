@@ -70,18 +70,19 @@
                             </div>
 
                                 <div class="mb-3 col-lg-6">
-                                    <label asp-for="company.Id" class="form-label">company</label>
+                                    <label asp-for="CompanyId" class="form-label">company</label>
                                     <select
                                         class="form-select "
-                                        asp-for="company.Id">
+                                        asp-for="CompanyId">
                     @{
-                        if(Model.company.Id == 1)
+                        if(Model.CompanyId == 1)
                         {
                              <option >Select one</option>
                              <option value="1" selected>nike</option>
                              
                             <option value="2">adidas</option>
-                        }else if(Model.company.Id == 2)
+                        }
+                        else if (Model.CompanyId == 2)
                         {
                                                          <option >Select one</option>
                              <option value="1" >nike</option>

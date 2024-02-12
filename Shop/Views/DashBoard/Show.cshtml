@@ -15,6 +15,7 @@
         <td class="table-light">Description</td>
         <td class="table-light">price</td>
         <td class="table-light">Quantity</td>
+        <td class="table-light">Company</td>
         <td class="table-light">operation</td>
 
     </tr>
@@ -29,6 +30,7 @@
         <td class="table-light">@item.Description</td>
         <td class="table-light">@item.Price</td>
         <td class="table-light">@item.Quantity</td>
+        <td class="table-light">@item.company.Name</td>
         <td class="table-light">@item.EnableSize</td>
             <td>
                 <a class="btn btn-success" role="button" asp-action="Edit" asp-route-Id="@item.Id">

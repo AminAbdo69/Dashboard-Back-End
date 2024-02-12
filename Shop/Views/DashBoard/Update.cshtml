@@ -37,7 +37,8 @@
             <input
             type="Date"
             asp-for="Date"
-            value="@ViewData["D"]"
+            
+            value="@Model.Date"
             class="form-control"
             placeholder="Choose Date"
             />
@@ -70,22 +71,22 @@
         </div>
 
         <div class="mb-3 col-lg-6">
-            <label asp-for="category.Id" class="form-label">Category</label>
-            <select asp-for="category.Id" class="form-select" >
+            <label asp-for="CategoryId" class="form-label">Category</label>
+            <select asp-for="CategoryId" class="form-select" >
                         @{
-                            if(Model.category.Id == 1)
+                            if (Model.CategoryId == 1)
                             {
                                 <option >Select one</option>
                                 <option value="1" selected>Fashion</option>
                                 <option value="2">Sports</option>
                                 <option value="3">Nature</option>
-                            }else if (Model.category.Id == 2)
+                            }else if (Model.CategoryId == 2)
                             {
                                 <option >Select one</option>
                                 <option value="1" >Fashion</option>
                                 <option value="2" selected>Sports</option>
                                 <option value="3">Nature</option>
-                            }else if(Model.category.Id == 3)
+                            }else if(Model.CategoryId == 3)
                             {
                                 <option >Select one</option>
                                 <option value="1" >Fashion</option>
