@@ -43,7 +43,7 @@ namespace Shop.Migrations
                 {
                     table.PrimaryKey("PK_posts", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_posts_categories_categoryId",
+                        name: "FK_posts_categories_CategoryId",
                         column: x => x.CategoryId,
                         principalTable: "categories",
                         principalColumn: "Id");
@@ -60,9 +60,9 @@ namespace Shop.Migrations
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_posts_categoryId",
+                name: "IX_posts_CategoryId",
                 table: "posts",
-                column: "categoryId");
+                column: "CategoryId");
         }
 
         /// <inheritdoc />

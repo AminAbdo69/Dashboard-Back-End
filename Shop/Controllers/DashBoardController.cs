@@ -1,8 +1,10 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Hosting;
 using Microsoft.VisualBasic;
 using Shop.Data;
 using Shop.Models;
+using System.ComponentModel.DataAnnotations;
 
 namespace Shop.Controllers
 {
@@ -44,6 +46,11 @@ namespace Shop.Controllers
         [HttpPost]
         public IActionResult Create(Product p)
         {
+
+            if (!ModelState.IsValid)
+            {
+                return View(p);
+            }
             _db.products.Add(p);
             _db.SaveChanges();
             _products.Add(p);
@@ -104,7 +111,10 @@ namespace Shop.Controllers
             //         posts.Add(post);
             //return RedirectToAction("Index");
 
-
+            if (!ModelState.IsValid)
+            {
+                return View(post);
+            }
             _db.posts.Add(post);
             _db.SaveChanges();
             _posts.Add(post);
@@ -171,6 +181,30 @@ namespace Shop.Controllers
         }
         #endregion
 
+
+    }
+
+    public class CheckMaxCompanyPriceAttribute : ValidationAttribute
+    {
+        private readonly int _maxCompanyPrice;
+        public CheckMaxCompanyPriceAttribute(int price) {
+            _maxCompanyPrice =price;
+        }
+
+        protected override ValidationResult? IsValid(object? value, ValidationContext validationContext)
+        {
+            Product product = (Product)validationContext.ObjectInstance;
+            int price;
+            if(!int.TryParse(value.ToString() , out price) ){
+                return new ValidationResult("Invalid Price Value");
+            }
+
+            if(product.CompanyId == 1 && price > _maxCompanyPrice)
+            {
+                return new ValidationResult("Price Must be less Than 30000 for ADDIDAS.");
+            }
+            return ValidationResult.Success;
+        }
 
     }
 }
